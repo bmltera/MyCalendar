@@ -1,7 +1,16 @@
 import java.util.*;
+/**
+ * The EventWriter writes events from MyCalendar onto output file.
+ * @author Bill Li
+ */
 import java.io.*;
 public class EventWriter {
 	
+	/**
+	 * Writes events from MyCalendar to output file.
+	 * @param cal - MyCalendar data structure
+	 * @throws IOException if file is invalid
+	 */
 	public static void writeEvents(MyCalendar cal) throws IOException {
 		File file = new File("output.txt");
 		FileWriter fr = new FileWriter(file);
@@ -33,6 +42,11 @@ public class EventWriter {
 		
 	}
 	
+	/**
+	 * Returns string representing start and end time of event
+	 * @param e - event
+	 * @return String representing start and end time of event
+	 */
 	private static String getHourMinutes(Event e) {
 		String startMinutes, endMinutes;
 		if(e.getInterval().getStartDate().getMinute() == 0){

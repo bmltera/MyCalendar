@@ -1,17 +1,22 @@
-
+/**
+ * An event is used in the MyCalendar data structure. It includes variables for name, isRecurring, interval, daysArray, and dayString.
+ * @author Bill Li
+ *
+ */
 public class Event implements Comparable<Event>{
 
 	private String name;
 	private boolean isRecurring;
 	private TimeInterval interval;
 	private boolean[] daysArray;
-	private String daysOfWeek;
+	//private String daysOfWeek;
 	private String dayString;
 	
+	
 	/**
-	 * Constructs an event.
-	 * @param name
-	 * @param interval
+	 * Constructs a one time event.
+	 * @param name - name of event
+	 * @param interval - TimeInterval of event
 	 */
 	public Event(String name, TimeInterval interval) {
 		this.name = name;
@@ -23,9 +28,9 @@ public class Event implements Comparable<Event>{
 	
 	/**
 	 * Constructs a recurring event.
-	 * @param name
-	 * @param interval
-	 * @param days
+	 * @param name - name of event
+	 * @param interval - TimeInterval of event
+	 * @param days - days of the week the event exists in
 	 */
 	public Event(String name, TimeInterval interval, String days) {
 		dayString = days;
@@ -59,32 +64,66 @@ public class Event implements Comparable<Event>{
 		}
 	}
 	
+	
+	/**
+	 * Returns boolean array of days with events for recurring event.
+	 * @return array of days indicating which days the recurring event exists in
+	 */
 	public boolean[] getDaysArray() {
 		return daysArray;
 	}
 	
+	
+	/**
+	 * Returns string of days of week of recurring event.
+	 * @return string of days of week
+	 */
 	public String getDayString() {
 		return dayString;
 	}
 	
+	
+	/**
+	 * Returns name of event.
+	 * @return event name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	
+	/**
+	 * Sets the event name.
+	 * @param name - event name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 	
+	
+	/**
+	 * Returns if the event is recurring.
+	 * @return true if recurring, false if not recurring
+	 */
 	public boolean isRecurring() {
 		return isRecurring;
 	}
 	
+	
+	/**
+	 * Returns TimeInterval of event.
+	 * @return TImeInterval of event
+	 */
 	public TimeInterval getInterval() {
 		return interval;
 	}
 
 
 	@Override
+	/**
+	 * CompareTo method for sorting.
+	 * @return compareTo order
+	 */
 	public int compareTo(Event that) {
 		if(this.interval.getDate() != that.getInterval().getDate()) {
 			return this.getInterval().getDate() - that.getInterval().getDate();
@@ -95,8 +134,12 @@ public class Event implements Comparable<Event>{
 		return 0;
 	}
 	
-
+	
 	@Override
+	/**
+	 * Returns hashcode of event.
+	 * @return event hashcode
+	 */
 	public int hashCode() {
 		return name.hashCode() + daysArray.hashCode();
 	}

@@ -1,7 +1,17 @@
 import java.util.*;
+/**
+ * The EventReader reads the input file and adds events to MyCalendar.
+ * @author Bill Li
+ * 
+ */
 import java.io.*;
 public class EventReader {
 	
+	/**
+	 * Reads and adds events to MyCalendar.
+	 * @param cal - MyCalendar data structure
+	 * @throws IOException if the file is invalid
+	 */
 	public static void readEvents(MyCalendar cal) throws IOException{
 		File data = new File("events.txt");
 		FileReader fr = new FileReader(data);
@@ -26,7 +36,7 @@ public class EventReader {
 				String endTime = info[2];
 				String startDate = info[3];
 				String endDate = info[4];
-				
+				//System.out.println(startDate);
 				TimeInterval interval = new TimeInterval(startDate, endDate, startTime, endTime);
 				Event event = new Event(name, interval, daysOfWeek);
 				cal.addEvent(event);
